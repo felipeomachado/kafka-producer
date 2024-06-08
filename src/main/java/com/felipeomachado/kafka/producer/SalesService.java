@@ -3,6 +3,7 @@ package com.felipeomachado.kafka.producer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SalesService {
@@ -19,7 +20,7 @@ public class SalesService {
 
     public void processSale(int inital, int max) {
         for(int i=0; i<max; i++) {
-            kafkaTemplate.send(salesTopicName, "key-test", "Message " + inital);
+            kafkaTemplate.send(salesTopicName, "Message 1");
             inital++;
         }
 
